@@ -1,6 +1,10 @@
 local g = vim.g
 local o = vim.o
 
+-- Leader Map
+g.mapleader = " "
+g.maplocalleader = " "
+
 o.termguicolors = true
 
 o.timeoutlen = 500
@@ -48,8 +52,4 @@ o.history = 100
 o.splitright = true
 o.splitbelow = true
 
--- Leader Map
-g.mapleader = " "
-g.maplocalleader = " "
-
-vim.cmd([[colorscheme moonfly]])
+vim.cmd([[colorscheme solarized]])

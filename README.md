@@ -1,4 +1,4 @@
-# Neovim configuration with Lua
+# Neovim configuration
 
 A [Neovim](https://github.com/neovim/neovim) configuration written in Lua.
 

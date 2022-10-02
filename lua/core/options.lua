@@ -52,4 +52,4 @@ o.history = 100
 o.splitright = true
 o.splitbelow = true
 
-vim.cmd([[colorscheme solarized]])
+vim.cmd([[colorscheme moonfly]])

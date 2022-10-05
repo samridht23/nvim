@@ -28,3 +28,14 @@ A [Neovim](https://github.com/neovim/neovim) configuration written in Lua.
 - [cmp-buffer](https://github.com/hrsh7th/cmp-buffer) - nvim-cmp source for buffer words. Provide snippets from buffer using nvim-cmp
 - [bufdelete.nvim](https://github.com/famiu/bufdelete.nvim) - Better deletion of buffer
 - [LuaSnip](https://github.com/L3MON4D3/LuaSnip) - Snippet Engine for Neovim written in Lua
+
+### Keymaps
+
+| Action               | Mapping     |
+| -------------------- | ----------- |
+| Leader Key           | ` `         |
+| Find files           | `<C-p>`     |
+| Fuzzy Help Tags      | `<leader>H` |
+| Fuzy Live Grep       | `<C-l>`     |
+| Telescope buffers    | `'b`        |
+| Telescope Git Status | `'c`        |

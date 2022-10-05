@@ -33,7 +33,7 @@ A [Neovim](https://github.com/neovim/neovim) configuration written in Lua.
 
 | Action               | Mapping     |
 | -------------------- | ----------- |
-| Leader Key           | ` `         |
+| Leader Key           | `Space `    |
 | Find files           | `<C-p>`     |
 | Fuzzy Help Tags      | `<leader>H` |
 | Fuzy Live Grep       | `<C-l>`     |

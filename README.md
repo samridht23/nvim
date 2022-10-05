@@ -35,7 +35,17 @@ A [Neovim](https://github.com/neovim/neovim) configuration written in Lua.
 | -------------------- | ----------- |
 | Leader Key           | `Space `    |
 | Find files           | `<C-p>`     |
-| Fuzzy Help Tags      | `<leader>H` |
-| Fuzy Live Grep       | `<C-l>`     |
+| Telescope Help Tags  | `<leader>H` |
+| Live Grep            | `<C-l>`     |
 | Telescope buffers    | `'b`        |
 | Telescope Git Status | `'c`        |
+| Lsp Definition       | `gd`        |
+| Lsp Type Definition  | `<space>D`  |
+| Declaration          | `gD`        |
+| Hover                | `K`         |
+| Lsp Implementation   | `gi`        |
+| Declaration          | `gD`        |
+| Signature help       | `<C-k>`     |
+| Global Buffer rename | `<space>rn` |
+| Lsp Reference        | `gr`        |
+| Formatting           | `<space>f`  |

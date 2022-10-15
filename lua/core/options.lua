@@ -48,6 +48,10 @@ o.swapfile = false
 -- Remember 100 items in commandline history
 o.history = 100
 
+--Neovide config
+-- set gui font to viewable size
+g.guifont = { "JetBrains Mono NL", "h5" }
+
 -- Better buffer splitting
 o.splitright = true
 o.splitbelow = true

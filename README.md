@@ -49,5 +49,3 @@ A [Neovim](https://github.com/neovim/neovim) configuration written in Lua.
 | Global Buffer rename | `<space>rn` |
 | Lsp Reference        | `gr`        |
 | Formatting           | `<space>f`  |
-
-TODO: Set LSP timeout to 2000

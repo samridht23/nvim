@@ -56,4 +56,4 @@ g.guifont = { "JetBrains Mono NL", "h5" }
 o.splitright = true
 o.splitbelow = true
 
-vim.cmd([[colorscheme moonfly]])
+vim.cmd([[colorscheme sonokai]])

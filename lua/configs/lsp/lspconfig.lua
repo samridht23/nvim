@@ -15,11 +15,11 @@ local on_attach = function(client, bufnr)
     -- setting null-ls as defalut client for formatting
     -- if the client attached is tsserver then disable document_formatting capabilities
     if client.name == 'tsserver' then
-        client.resolved_capabilities.document_formatting = false
+        client.supports_method("textDocument/formatting")
     end
     -- if the client attached is sumneko_lua then disable document_formatting capabilities
     if client.name == 'sumneko_lua' then
-        client.resolved_capabilities.document_formatting = false
+        client.supports_method("textDocument/formatting")
     end
 
     -- Mappings.

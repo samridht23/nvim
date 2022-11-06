@@ -5,10 +5,6 @@ local o = vim.o
 g.mapleader = " "
 g.maplocalleader = " "
 
--- gui config
-o.termguicolors = false
-o.guifont = "JetBrains Mono NL:h8"
-
 o.timeoutlen = 500
 o.updatetime = 200
 
@@ -50,10 +46,8 @@ o.swapfile = false
 -- Remember 100 items in commandline history
 o.history = 100
 
---Neovide config
--- set gui font to viewable size
-g.guifont = { "JetBrains Mono NL", "h5" }
-
 -- Better buffer splitting
 o.splitright = true
 o.splitbelow = true
+
+vim.cmd [[colorscheme everforest]]

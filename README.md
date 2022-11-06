@@ -35,17 +35,53 @@ A [Neovim](https://github.com/neovim/neovim) configuration written in Lua.
 | -------------------- | ----------- |
 | Leader Key           | `Space `    |
 | Find files           | `<C-p>`     |
-| Telescope Help Tags  | `<leader>H` |
 | Live Grep            | `<C-l>`     |
+| netrw                | `<space>jj` |
+| Formatting           | `<space>f`  |
+| Telescope Help Tags  | `<leader>H` |
 | Telescope buffers    | `'b`        |
 | Telescope Git Status | `'c`        |
 | Lsp Definition       | `gd`        |
 | Lsp Type Definition  | `<space>D`  |
 | Declaration          | `gD`        |
-| Hover                | `K`         |
+| Hover type inference | `K`         |
 | Lsp Implementation   | `gi`        |
 | Declaration          | `gD`        |
 | Signature help       | `<C-k>`     |
 | Global Buffer rename | `<space>rn` |
 | Lsp Reference        | `gr`        |
-| Formatting           | `<space>f`  |
+
+### Packer
+
+| Command            | Description                                                                  |
+| ------------------ | ---------------------------------------------------------------------------- |
+| ` :PackerComplete` | Fires after install, update, clean, and sync asynchronous operations finish. |
+| ` :PackerCompile`  | Regenerate compiled loader file                                              |
+| ` :PackerClean`    | Remove any disabled and unused plugins                                       |
+| ` :PackerInstall`  | Clean, then install missing plugins                                          |
+| ` :PackerUpdate`   | Clean, then update and then install plugins                                  |
+| ` :PackerSync`     | Perform `PackerUpdate` and then `PackerCompile`                              |
+
+### Treesitter
+
+| Command                  | Description                |
+| ------------------------ | -------------------------- |
+| ` :TSInstall <language>` | Install language parser    |
+| ` :TSInstallInfo`        | Info about language parser |
+
+### LSP
+
+| Command     | Description                        |
+| ----------- | ---------------------------------- |
+| ` :LspInfo` | Info about all lsp attached client |
+
+> First install binaries of server to the system using system package manager
+> Ex `sudo pacman -D tsserver` for typescript client
+
+### Mason
+
+| Command                         | Description                 |
+| ------------------------------- | --------------------------- |
+| ` :Mason`                       | Install LSP servers         |
+| ` :MasonLog`                    | Print Log for LSP servers   |
+| ` :MasonUninstall <lsp_server>` | Uninstall particular server |

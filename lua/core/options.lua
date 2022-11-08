@@ -5,7 +5,7 @@ local o = vim.o
 g.mapleader = " "
 g.maplocalleader = " "
 
-o.timeoutlen = 500
+o.timeoutlen = 700
 o.updatetime = 200
 
 -- Number of screen lines to keep above and below the cursor
@@ -50,4 +50,4 @@ o.history = 100
 o.splitright = true
 o.splitbelow = true
 
-vim.cmd [[colorscheme everforest]]
+vim.cmd([[colorscheme everforest]])

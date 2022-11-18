@@ -10,8 +10,10 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 -- add binary formatter here
 -- null-ls uses system binary formatter for formatting insted of 3rd party language server
 
+-- builtins formatter builtins https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md
+--
 null_ls.setup({
-	sources = { formatting.prettier, formatting.stylua },
+	sources = { formatting.prettier, formatting.stylua, formatting.astyle },
 	-- auto format on save
 	on_attach = function(client, bufnr)
 		if client.supports_method("textDocument/formatting") then

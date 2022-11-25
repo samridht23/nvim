@@ -26,8 +26,8 @@ o.cindent = true
 o.wrap = true
 o.textwidth = 0
 o.tabstop = 4
-o.shiftwidth = 2
-o.softtabstop = 2
+o.shiftwidth = 4
+o.softtabstop = 4
 o.list = true
 o.listchars = "trail:·,nbsp:◇,tab:→ ,extends:▸,precedes:◂"
 

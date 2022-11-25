@@ -13,7 +13,7 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 -- builtins formatter builtins https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md
 --
 null_ls.setup({
-	sources = { formatting.prettier, formatting.stylua, formatting.astyle },
+	sources = { formatting.prettier, formatting.stylua, formatting.astyle, formatting.gofmt },
 	-- auto format on save
 	on_attach = function(client, bufnr)
 		if client.supports_method("textDocument/formatting") then

@@ -23,6 +23,9 @@ local on_attach = function(client, bufnr)
 	if client.name == "clangd" then
 		client.supports_method("textDocument/formatting")
 	end
+	if client.name == "gopls" then
+		client.supports_method("textDocument/formatting")
+	end
 	-- if the client attached is sumneko_lua then disable document_formatting capabilities
 	if client.name == "sumneko_lua" then
 		client.supports_method("textDocument/formatting")
@@ -53,6 +56,7 @@ local lsp_flags = { debounce_text_changes = 150 }
 
 -- add new lsp client here
 require("lspconfig")["pyright"].setup({ on_attach = on_attach, flags = lsp_flags })
+require("lspconfig")["gopls"].setup({ on_attach = on_attach, flags = lsp_flags })
 
 require("lspconfig")["tsserver"].setup({
 	on_attach = on_attach,

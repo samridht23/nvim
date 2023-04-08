@@ -13,12 +13,6 @@ end
 
 local packer_bootstrap = ensure_packer()
 
--- move this to blog
---[[ Packer Builtins Keywords
-init: The init keyword is used in the Packer configuration to specify a function that will be executed before the plugin is initialized. This function is typically used to load any required modules or perform any setup tasks that are necessary before the plugin can be used. The init function is executed in the order in which it is defined in the Packer configuration.
-config: The config keyword is used in the Packer configuration to specify a function that will be executed after the plugin is initialized. This function is typically used to perform additional configuration tasks that are required to set up the plugin for use in your Neovim environment. The config function is executed in the order in which it is defined in the Packer configuration, after the init function and plugin initialization.
-cmd: The cmd keyword is used in the Packer configuration to specify a command that can be used to trigger a function associated with the plugin. This command can be executed in Neovim's command-line mode, and it is typically used to provide a convenient way to interact with the plugin or trigger specific actions related to the plugin's functionality.
---]]
 return require('packer').startup({
     function(use)
         -- Packer will manage itself

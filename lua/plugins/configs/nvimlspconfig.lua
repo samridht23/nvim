@@ -3,6 +3,7 @@
 local lspconfig = require('lspconfig')
 -- sudo pacman -S pyright
 lspconfig.pyright.setup {}
+lspconfig.pylsp.setup {}
 -- npm install -g typescript typescript-language-server
 lspconfig.tsserver.setup {}
 -- npm i -g svelte-language-server

@@ -56,14 +56,14 @@ o.autoindent = true
 -- effectively disables automatic text wrapping
 -- o.textwidth = 0
 
--- set tab to 4 spaces
-o.tabstop = 4
+-- set tab to 2 spaces
+o.tabstop = 2
 -- when autoindent is enabled neovim will ues 4 space for each level of indentation
-o.softtabstop = 4
+o.softtabstop = 2
 
 -- when we command `Ctrl + >` or `Ctrl + <` to manually indent
--- neovim will use 4 spaces for each level of indentation
-o.shiftwidth = 4
+-- neovim will use 2 spaces for each level of indentation
+o.shiftwidth = 2
 
 -- non-printable character such as spaces, tabs and line endings will be displayed using special symbols.
 o.list = true

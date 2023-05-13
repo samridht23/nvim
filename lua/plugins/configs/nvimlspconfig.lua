@@ -4,14 +4,13 @@ local lspconfig = require('lspconfig')
 -- sudo pacman -S pyright
 lspconfig.pyright.setup {}
 lspconfig.pylsp.setup {}
+lspconfig.rust_analyzer.setup {}
 -- npm install -g typescript typescript-language-server
 lspconfig.tsserver.setup {}
 -- npm i -g svelte-language-server
 lspconfig.svelte.setup {}
 -- sudo pacman -S clang
 lspconfig.clangd.setup {}
--- npm i -g emmet-ls
-lspconfig.emmet_ls.setup {}
 -- sudo pacman -S gopls
 lspconfig.gopls.setup {}
 -- sudo pacman -S lua-language-server

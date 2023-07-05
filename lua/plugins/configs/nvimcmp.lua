@@ -122,9 +122,6 @@ require('lspconfig')['svelte'].setup {
 require('lspconfig')['clangd'].setup {
     capabilities = capabilities
 }
-require('lspconfig')['emmet_ls'].setup {
-    capabilities = capabilities
-}
 require('lspconfig')['gopls'].setup {
     capabilities = capabilities
 }

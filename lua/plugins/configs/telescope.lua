@@ -1,5 +1,8 @@
-local actions = require("telescope.actions")
-local A = vim.api
+local ok, actions = pcall(require, "telescope.actions")
+if not ok then
+    print("Error loading telescope actions:", actions)
+end
+
 require("telescope").setup({
     defaults = {
         prompt_prefix = " ❯ ",
@@ -15,8 +18,7 @@ require("telescope").setup({
                 ["<ESC>"] = actions.close,
                 ["<C-j>"] = actions.move_selection_next,
                 ["<C-k>"] = actions.move_selection_previous,
-                ["<TAB>"] = actions.toggle_selection +
-                    actions.move_selection_next,
+                ["<TAB>"] = actions.toggle_selection + actions.move_selection_next,
                 ["<C-s>"] = actions.send_selected_to_qflist,
                 ["<C-q>"] = actions.send_to_qflist
             }
@@ -35,15 +37,13 @@ require("telescope").setup({
 _G.Telescope = setmetatable({}, {
     __index = function(_, k)
         if vim.bo.filetype == "NvimTree" then
-            A.nvim_cmd({ cmd = "wincmd", args = { "l" } }, {})
+            vim.api.nvim_cmd({ cmd = "wincmd", args = { "l" } }, {})
         end
         return require("telescope.builtin")[k]
     end
 })
 
--- fuzzy finder keymaps
-vim.keymap.set("n", "<C-P>",
-    "<CMD>lua Telescope.find_files({ hidden = true })<CR>")
+vim.keymap.set("n", "<C-P>", "<CMD>lua Telescope.find_files({ hidden = true })<CR>")
 vim.keymap.set("n", "<leader>H", "<CMD>lua Telescope.help_tags()<CR>")
 vim.keymap.set("n", "'b", "<CMD>lua Telescope.buffers()<CR>")
 vim.keymap.set("n", "<C-l>", "<CMD>lua Telescope.live_grep()<CR>")

@@ -1,4 +1,7 @@
-local cmp = require('cmp')
+local ok, cmp = pcall(require, 'cmp')
+if not ok then
+    print("Error loading nvim-cmp:", cmp)
+end
 
 local function border(hl_name)
     return {
@@ -9,12 +12,8 @@ end
 
 cmp.setup({
     snippet = {
-        -- REQUIRED - you must specify a snippet engine
         expand = function(args)
-            -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-            require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-            -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-            -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+            require('luasnip').lsp_expand(args.body) -- Provide snipet engine here.
         end,
     },
     window = {
@@ -25,7 +24,6 @@ cmp.setup({
             border = border "CmpBorder",
             winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None"
         },
-        -- give border to documentation
         documentation = { border = border "CmpDocBorder" }
     },
     mapping = cmp.mapping.preset.insert({
@@ -64,18 +62,16 @@ cmp.setup({
             end, { "i", "s" }),
     }),
     sources = cmp.config.sources({
-        -- provide snippet from LSP
+        -- Snippet from LSP
         { name = 'nvim_lsp' },
-        -- { name = 'vsnip' }, -- For vsnip users.
-        { name = 'luasnip' }, -- For luasnip users.
-        -- { name = 'ultisnips' }, -- For ultisnips users.
-        -- { name = 'snippy' }, -- For snippy users.
+        -- Snippet engine
+        { name = 'luasnip' },
     }, {
-        -- provide snippet from buffer
+        -- Snippet from buffer
         { name = 'buffer' },
-        -- provide file path to luasnip
+        -- File path snippet
         { name = 'path' },
-        -- provide neovim function for lua development
+        -- Neovim function for lua development
         { name = "nvim_lua" },
     })
 })
@@ -109,8 +105,16 @@ cmp.setup.cmdline(':', {
 
 -- Set up lspconfig.
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
 -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
+
+require('lspconfig')['pylsp'].setup {
+    capabilities = capabilities
+}
 require('lspconfig')['pyright'].setup {
+    capabilities = capabilities
+}
+require('lspconfig')['rust_analyzer'].setup {
     capabilities = capabilities
 }
 require('lspconfig')['tsserver'].setup {

@@ -24,7 +24,7 @@ o.autoread = true
 o.backup = false
 o.writebackup = false
 o.swapfile = false
-o.history = 1000
+o.history = 10000
 o.splitright = true
 o.splitbelow = true
 o.mouse = "a"
@@ -36,3 +36,6 @@ o.tabstop = 2
 o.shiftwidth = 2
 o.expandtab = true
 o.belloff = "all"
+
+o.background = "dark"
+

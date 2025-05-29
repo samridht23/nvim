@@ -12,7 +12,7 @@ g.mapleader = " "
 o.timeoutlen = 200
 o.updatetime = 200
 o.scrolloff = 15
-o.relativenumber = true
+o.relativenumber = false
 o.numberwidth = 2
 o.ruler = true
 o.cursorline = true
@@ -39,3 +39,16 @@ o.belloff = "all"
 
 o.background = "dark"
 
+-- neovide configs
+if vim.g.neovide then
+  vim.g.neovide_scale_factor = 0.7
+
+  local change_scale = function(delta)
+    vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + delta
+  end
+
+  vim.keymap.set("n", "<C-=>", function() change_scale(0.1) end)
+  vim.keymap.set("n", "<C-->", function() change_scale(-0.1) end)
+
+  vim.o.guifont = "Menlo:h14"
+end

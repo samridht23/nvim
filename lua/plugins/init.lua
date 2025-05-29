@@ -39,21 +39,23 @@ local plugins = {
     end,
   },
   {
-    "rebelot/kanagawa.nvim",
+
+  "horanmustaplot/xcarbon.nvim",
+    dependencies = "rktjmp/lush.nvim",
     version = false,
     lazy = false,
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme("kanagawa-dragon")
+      vim.cmd.colorscheme("xcarbon")
     end,
   },
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    main = "ibl",
-    config = function()
-      require("ibl").setup()
-    end,
-  },
+  --{
+  --  "lukas-reineke/indent-blankline.nvim",
+  --  main = "ibl",
+  --  config = function()
+  --    require("ibl").setup()
+  --  end,
+  --},
   {
     "nvim-tree/nvim-tree.lua",
     version = "*",

@@ -1,11 +1,11 @@
 require("lualine").setup({
   options = {
-    component_separators = { left = "", right = "" },
-    section_separators = { left = "", right = "" },
-    icons_enabled = true,
+    component_separators = { left = "", right = "" },
+    section_separators = { left = "", right = "" },
+    icons_enabled = false,
+    theme = '16color',
     globalstatus = true,
     always_divide_middle = true,
-    theme = "iceberg_dark",
     refresh = {
       statusline = 1000,
       tabline = 1000,
@@ -14,7 +14,7 @@ require("lualine").setup({
   },
   sections = {
     lualine_a = { { "mode", color = { gui = "bold" } } },
-    lualine_b = { { "branch" }, { "diff", colored = false } },
+    lualine_b = { { "branch" }, { "diff", colored = true } },
     lualine_c = { { "filename", file_status = true, path = 1 }, { "diagnostics" } },
     lualine_x = { "filetype", "encoding", "fileformat" },
     lualine_y = { "progress" },

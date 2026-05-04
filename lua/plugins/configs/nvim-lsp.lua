@@ -1,84 +1,66 @@
--- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-local ok, lspconfig = pcall(require, "lspconfig")
-if not ok then
-  print("Error loading lspconfig:", lspconfig)
+local ok_lsp, lspconfig = pcall(require, "lspconfig")
+if not ok_lsp then
+  vim.notify("Failed to load nvim-lspconfig", vim.log.levels.ERROR)
+  return
 end
 
-local configs = require 'lspconfig.configs'
+local lsp_config = vim.lsp.config
 
-configs.solidity = {
-  default_config = {
-    cmd = { 'nomicfoundation-solidity-language-server', '--stdio' },
-    filetypes = { 'solidity' },
-    root_dir = lspconfig.util.find_git_ancestor,
-    single_file_support = true,
-  },
+lsp_config['pyright'] = {}
+lsp_config['zls'] = {}
+lsp_config['postgres_lsp'] = {}
+lsp_config['rust_analyzer'] = {}
+
+lsp_config["graphql"] = {
+  cmd = { "graphql-lsp", "server", "-m", "stream" },
+  filetypes = { "graphql", "typescriptreact", "javascriptreact", "gql" },
+  root_markers = { ".git", "package.json" },
 }
 
-lspconfig.pyright.setup({})
-lspconfig.solidity.setup({})
-lspconfig.postgres_lsp.setup({})
-lspconfig.pylsp.setup({})
-lspconfig.rust_analyzer.setup({})
-lspconfig.ts_ls.setup({})
-lspconfig.svelte.setup({})
-lspconfig.graphql.setup({
-  filetypes = { "graphql", "typescriptreact", "javascriptreact", "gql" },
-})
-lspconfig.clangd.setup({
-  cmd = { "clangd" },
+lsp_config['clangd'] = {
+  cmd = { "clangd", "--extra-args=-std=c++11" },
   filetypes = { "c", "cpp", "objc", "objcpp" },
-  root_dir = require('lspconfig.util').root_pattern("compile_commands.json", ".clangd", ".git"),
-})
-lspconfig.gopls.setup({
+  root_dir = vim.fs.root(0, { "compile_commands.json", ".clangd", ".git" }),
+}
+
+lsp_config['gopls'] = {
   settings = {
     gopls = {
-      analyses = {
-        unusedparams = true,
-      },
-      staticcheck = true,
+      analyses = { unusedparams = true },
+      staticcheck = false,
       gofumpt = true,
-    },
-  },
-})
-lspconfig.lua_ls.setup({})
+    }
+  }
+}
 
-vim.keymap.set("n", "<space>e", vim.diagnostic.open_float)
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
-vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist)
-vim.diagnostic.config({
-  virtual_text = false,
-})
-vim.o.updatetime = 250
+lsp_config['lua_ls'] = {
+  cmd = { 'lua-language-server' },
+  filetypes = { 'lua' },
+  root_markers = { { '.luarc.json', '.luarc.jsonc' }, '.git' },
+  settings = {
+    Lua = {
+      diagnostics = { globals = { "vim", "require" } },
+      runtime = {
+        version = 'LuaJIT',
+      }
+    }
+  }
+}
 
-vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]])
+local servers = {
+  "pyright",
+  "rust_analyzer",
+  "ts_ls",
+  "svelte",
+  "clangd",
+  "gopls",
+  "lua_ls",
+  "graphql"
+}
+vim.lsp.enable(servers)
 
--- Use LspAttach autocommand to only map the following keys
--- after the language server attaches to the current buffer
-vim.api.nvim_create_autocmd("LspAttach", {
-  group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-  callback = function(ev)
-    -- Enable completion triggered by <c-x><c-o>
-    vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
-
-    local opts = { buffer = ev.buf }
-    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-    vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-    vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-    vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-    vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
-    vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
-    vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
-    vim.keymap.set("n", "<space>wl", function()
-      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    end, opts)
-    vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
-    vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
-    vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, opts)
-    vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-    vim.keymap.set("n", "<space>f", function()
-      vim.lsp.buf.format({ async = true })
-    end, opts)
+vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+  callback = function()
+    vim.diagnostic.open_float(nil, { focus = false })
   end,
 })

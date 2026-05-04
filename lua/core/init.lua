@@ -12,7 +12,7 @@ g.mapleader = " "
 o.timeoutlen = 200
 o.updatetime = 200
 o.scrolloff = 15
-o.relativenumber = false
+o.relativenumber = true
 o.numberwidth = 2
 o.ruler = true
 o.cursorline = true
@@ -20,7 +20,6 @@ o.signcolumn = "yes:1"
 o.cindent = true
 o.autoindent = true
 o.autoread = true
--- o.background = "dark"
 o.backup = false
 o.writebackup = false
 o.swapfile = false
@@ -36,19 +35,11 @@ o.tabstop = 2
 o.shiftwidth = 2
 o.expandtab = true
 o.belloff = "all"
-
 o.background = "dark"
+o.updatetime = 250
 
--- neovide configs
-if vim.g.neovide then
-  vim.g.neovide_scale_factor = 0.7
 
-  local change_scale = function(delta)
-    vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + delta
-  end
+require("core.keybindings")
 
-  vim.keymap.set("n", "<C-=>", function() change_scale(0.1) end)
-  vim.keymap.set("n", "<C-->", function() change_scale(-0.1) end)
-
-  vim.o.guifont = "Menlo:h14"
-end
+g.neovide_scale_factor = 0.75
+o.guifont = "Iosevka:h14"

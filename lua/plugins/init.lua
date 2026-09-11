@@ -61,9 +61,19 @@ local plugins = {
     lazy = false,
     priority = 1000,
     config = function()
-      vim.cmd("colorscheme xcarbon")
+      vim.cmd.colorscheme("xcarbon")
     end,
   },
+  --{
+  --  "ellisonleao/gruvbox.nvim",
+  --  priority = 1000,
+  --  config = function()
+  --    require("gruvbox").setup({
+  --      transparent_mode = true,
+  --    })
+  --    vim.cmd.colorscheme("gruvbox")
+  --  end,
+  --},
   {
     "lewis6991/gitsigns.nvim",
     config = function()

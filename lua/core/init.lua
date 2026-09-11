@@ -12,6 +12,7 @@ g.mapleader = " "
 o.timeoutlen = 200
 o.updatetime = 200
 o.scrolloff = 15
+o.number = true
 o.relativenumber = true
 o.numberwidth = 2
 o.ruler = true
@@ -39,7 +40,12 @@ o.background = "dark"
 o.updatetime = 250
 
 
+
 require("core.keybindings")
 
-g.neovide_scale_factor = 0.75
-o.guifont = "Iosevka:h14"
+
+if vim.g.neovide then
+  g.neovide_scale_factor = 1.0
+  o.guifont = "Lilex:h12"
+  vim.o.linespace = 3
+end

@@ -1,4 +1,4 @@
-local ok_lsp, lspconfig = pcall(require, "lspconfig")
+local ok_lsp, _ = pcall(require, "lspconfig")
 if not ok_lsp then
   vim.notify("Failed to load nvim-lspconfig", vim.log.levels.ERROR)
   return
@@ -18,7 +18,7 @@ lsp_config["graphql"] = {
 }
 
 lsp_config['clangd'] = {
-  cmd = { "clangd", "--extra-args=-std=c++11" },
+  --cmd = { "clangd", "--extra-args=-std=c++20" },
   filetypes = { "c", "cpp", "objc", "objcpp" },
   root_dir = vim.fs.root(0, { "compile_commands.json", ".clangd", ".git" }),
 }
@@ -27,7 +27,7 @@ lsp_config['gopls'] = {
   settings = {
     gopls = {
       analyses = { unusedparams = true },
-      staticcheck = false,
+      staticcheck = true,
       gofumpt = true,
     }
   }
